@@ -1,20 +1,17 @@
 package pl.szmitka.productcatalog;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
 public class ProductCatalog {
-    private List<Product> products;
-
-    public ProductCatalog() {
-        this.products = new ArrayList<>();
+    ProductStorage productStorage;
+    public ProductCatalog(ProductStorage productStorage) {
+        this.productStorage = productStorage;
     }
 
     public List<Product> allProducts() {
-        return Collections.unmodifiableList(products);
+        return productStorage.allProducts();
     }
 
     public String createProduct(String name, String description) {
@@ -25,16 +22,13 @@ public class ProductCatalog {
                 name,
                 description
         );
-        this.products.add(newProduct);
+        this.productStorage.save(newProduct);
 
         return newProduct.getId();
     }
 
     public Product loadProductById(String productId) {
-        return products.stream()
-                .filter(product -> product.getId().equals(productId))
-                .findFirst()
-                .get();
+        return productStorage.loadProductById(productId);
     }
 
     public void changePrice(String productId, BigDecimal bigDecimal) {
@@ -46,7 +40,7 @@ public class ProductCatalog {
     }
 
     public void changeImage(String productId, String URL) {
-        var product = loadProductById(productId);
+        var product = productStorage.loadProductById(productId);
         product.setImage(URL);
     }
 }

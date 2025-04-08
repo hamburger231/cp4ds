@@ -77,6 +77,8 @@ public class ProductCatalogTest {
         assertEquals(BigDecimal.valueOf(100.10), loaded.getPrice());
     }
     private ProductCatalog thereIsProductCatalog() {
-        return new ProductCatalog();
+        return new ProductCatalog(
+                new ArrayListProductStorage()
+        );
     }
 }
