@@ -3,6 +3,7 @@ package pl.szmitka.productcatalog;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,9 +12,14 @@ public class SqlProductStorageTest {
         return SqlProductStorage();
     }
 
-    private Product thereIsProduct() {
+    private ProductStorage SqlProductStorage() {
         return null;
     }
+
+    private Product thereIsProduct() {
+        return new Product(UUID.randomUUID(), "test it", "siemaneczko");
+    }
+
 
     @Test
     void itSaveAndLoadProduct() {

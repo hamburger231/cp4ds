@@ -3,16 +3,17 @@ package pl.szmitka.productcatalog;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HashMapProductStorageTest {
     private ProductStorage thereIsStorage() {
-        return HashMapProductStorage();
+        return new HashMapProductStorage();
     }
 
     private Product thereIsProduct() {
-        return null;
+        return new Product(UUID.randomUUID(), "test it", "siemaneczko");
     }
 
     @Test
