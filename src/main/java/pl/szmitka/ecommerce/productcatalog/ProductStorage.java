@@ -1,4 +1,4 @@
-package pl.szmitka.productcatalog;
+package pl.szmitka.ecommerce.productcatalog;
 
 import java.util.List;
 

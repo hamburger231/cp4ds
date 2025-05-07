@@ -2,8 +2,8 @@ package pl.szmitka.ecommerce;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.szmitka.productcatalog.Product;
-import pl.szmitka.productcatalog.ProductCatalog;
+import pl.szmitka.ecommerce.productcatalog.Product;
+import pl.szmitka.ecommerce.productcatalog.ProductCatalog;
 
 import java.util.List;
 

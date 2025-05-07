@@ -4,8 +4,8 @@ package pl.szmitka.ecommerce;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import pl.szmitka.productcatalog.ArrayListProductStorage;
-import pl.szmitka.productcatalog.ProductCatalog;
+import pl.szmitka.ecommerce.productcatalog.ArrayListProductStorage;
+import pl.szmitka.ecommerce.productcatalog.ProductCatalog;
 
 @SpringBootApplication
 public class App {

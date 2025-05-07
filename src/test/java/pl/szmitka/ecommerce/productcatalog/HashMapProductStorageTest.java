@@ -1,6 +1,9 @@
-package pl.szmitka.productcatalog;
+package pl.szmitka.ecommerce.productcatalog;
 
 import org.junit.jupiter.api.Test;
+import pl.szmitka.ecommerce.productcatalog.HashMapProductStorage;
+import pl.szmitka.ecommerce.productcatalog.Product;
+import pl.szmitka.ecommerce.productcatalog.ProductStorage;
 
 import java.util.List;
 import java.util.UUID;

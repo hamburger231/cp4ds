@@ -1,4 +1,4 @@
-package pl.szmitka.productcatalog;
+package pl.szmitka.ecommerce.productcatalog;
 
 import java.math.BigDecimal;
 import java.util.List;

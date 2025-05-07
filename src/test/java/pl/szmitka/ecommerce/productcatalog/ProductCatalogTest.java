@@ -1,6 +1,9 @@
-package pl.szmitka.productcatalog;
+package pl.szmitka.ecommerce.productcatalog;
 
 import org.junit.jupiter.api.Test;
+import pl.szmitka.ecommerce.productcatalog.ArrayListProductStorage;
+import pl.szmitka.ecommerce.productcatalog.Product;
+import pl.szmitka.ecommerce.productcatalog.ProductCatalog;
 
 import java.math.BigDecimal;
 import java.util.List;
