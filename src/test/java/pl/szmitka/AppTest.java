@@ -1,4 +1,4 @@
-package pl.szmitka.ecommerce;
+package pl.szmitka;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,8 +1,10 @@
 package pl.szmitka.ecommerce.productcatalog;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+@Configuration
 public class CatalogConfiguration {
     @Bean
     ProductCatalog createMyProductCatalog(ProductStorage storage) {

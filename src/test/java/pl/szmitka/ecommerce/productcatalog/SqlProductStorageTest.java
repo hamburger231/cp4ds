@@ -47,6 +47,7 @@ public class SqlProductStorageTest {
                 """;
         jdbcTemplate.execute(sql);
     }
+
     @Test
     void itAllowsToInsertIntoTableWithArguments() {
         var insertSql = """
