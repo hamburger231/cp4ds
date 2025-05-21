@@ -10,56 +10,69 @@ import java.util.UUID;
 
 public class SqlProductStorage implements ProductStorage{
     private final JdbcTemplate jdbcTemplate;
+
     public SqlProductStorage(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
     @Override
-    public List<Product> allProducts() {
-        var sql = "select * from `product_catalog__products`";
-        var result = jdbcTemplate.query(
+    public Product loadProductById(String productId) {
+        // SQL -> Product
+        var sql = "select * from `product_catalog__products` where id = ?";
+
+        var result = jdbcTemplate.queryForObject(
                 sql,
-                new Object[]{},
-                (rs, i)-> {
+                new Object[]{productId},
+                (rs, i) -> {
                     var product = new Product(
                             UUID.fromString(rs.getString("ID")),
                             rs.getString("NAME"),
                             rs.getString("DESCRIPTION")
                     );
+
                     return product;
                 });
+
         return result;
     }
 
     @Override
     public void save(Product newProduct) {
+        //if already exists
         var insertSql = """
-                INSERT INTO `product_catalog__products` (id,name,description)
-                VALUES (:id, :name, :desc)
-                """;
+            INSERT INTO `product_catalog__products` (id, name, description)
+            VALUES
+                (:id, :name, :desc)
+        """;
+
         Map<String, Object> params = new HashMap<>();
         params.put("id", newProduct.getId());
         params.put("desc", newProduct.getDescription());
         params.put("name", newProduct.getName());
 
         var namedJdbc = new NamedParameterJdbcTemplate(jdbcTemplate);
-
         namedJdbc.update(insertSql, params);
     }
 
+
     @Override
-    public Product loadProductById(String productId) {
-        var sql = "select * from `product_catalog__products` where id  = ?";
-        var result = jdbcTemplate.queryForObject(
+    public List<Product> allProducts() {
+        // SQL -> Product
+        var sql = "select * from `product_catalog__products`";
+
+        var result = jdbcTemplate.query(
                 sql,
-                new Object[]{productId},
-                (rs, i)-> {
+                new Object[]{},
+                (rs, i) -> {
                     var product = new Product(
                             UUID.fromString(rs.getString("ID")),
                             rs.getString("NAME"),
                             rs.getString("DESCRIPTION")
-                            );
+                    );
+
                     return product;
                 });
+
         return result;
     }
 }
